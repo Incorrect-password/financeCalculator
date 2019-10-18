@@ -6,7 +6,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 <!--    maybe wrong above and below -->
-    <script src="js/.all.js"></script>
+    <script async defer src="js/dist/main.js"></script>
     <title>Finance Calculator</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <div class="row">
         <div class="jumbotron col-8">
             <h1 class="display-4 col-8">Finance Calculator</h1>
-            <p class="lead col-12">Fill out the form below and we will calculate exactly what you will pay for your tuition at Mayden Academy</p>
+            <p class="lead col-12">Fill out the form below and we will calculate exactly what you will pay for your tuition at Mayden Academy and how long it will take to pay that back</p>
             <hr class="my-4">
             <p>You may borrow any amount between £1-£8000.</p>
             <p>If you borrow above £6400 an additional charge of £500 will be made.</p>
@@ -22,7 +22,7 @@
             <p>An admin fee of 5% will also be charged.</p>
         </div>
     </div>
-    <form>
+    <form id="input">
     <div class="row">
         <div class="col-4">
             <p>The amount you would like to borrow to pay for your course</p>
@@ -32,7 +32,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">£</span>
                 </div>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest pound)">
+                <input id="borrowed" type="number" class="form-control" aria-label="Amount (to the nearest pound)">
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -48,7 +48,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">£</span>
                 </div>
-                <input type="number" class="form-control" aria-label="Amount (to the nearest pound)">
+                <input id="expectedSalary" value="25000" type="number" class="form-control" aria-label="Amount (to the nearest pound)">
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -61,7 +61,7 @@
         </div>
         <div class="col-4">
             <div class="input-group mb-3">
-                <input type="number" class="form-control" aria-label="Percentage of your pay to pay back">
+                <input id="repaymentPercentage" type="number" class="form-control" aria-label="Percentage of your pay to pay back">
                 <div class="input-group-append">
                     <span class="input-group-text">%</span>
                 </div>
@@ -78,6 +78,9 @@
 
     </div>
     <div id="totalBorrowed">
+
+    </div>
+    <div id="payback">
 
     </div>
 </div>
