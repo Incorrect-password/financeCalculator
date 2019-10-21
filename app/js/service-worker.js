@@ -12,7 +12,7 @@ var filesToCache = [
     "http://localhost:1234/index.php",
 ];
 
-importScripts('js/localforage.js');
+importScripts('/localforage.js');
 
 self.addEventListener("install", function(event) {
     log('[ServiceWorker] Installing....');

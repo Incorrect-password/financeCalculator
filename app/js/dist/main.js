@@ -33,38 +33,35 @@ document.querySelector('form').addEventListener('submit', function (e) {
             return total;
         }
         else {
-            document.querySelector('#resultDisplay').innerHTML = 'read the fucking instructions, alternatively stop fucking about';
-
+            document.querySelector('#borrowed').innerHTML = 'The amount inputted does not match the criteria. Please refresh and start again.';
         }
     }
-
-function paybackTime(total, expectedSalary, repaymentPercentage) {
-    var monthlyPayment = ((expectedSalary / 12) / 100) * repaymentPercentage;
-    var months = Math.ceil((total / monthlyPayment));
-    return months;
-}
-function resultPrint(upFront, total, months) {
-    var source = document.querySelector('#resultsTemplate').innerHTML;
-    var template = Handlebars.compile(source);
-    var data = {
-        fees: upFront,
-        totals: total,
-        month: months
-    };
-    var html = template(data);
-    document.querySelector('#resultDisplay').innerHTML = html;
-}
-//pwa stuff
-window.addEventListener('online', updatedStatus);
-window.addEventListener('offline', updatedStatus);
-document.addEventListener('DomContentLoaded', updatedStatus);
-function updatedStatus() {
-    if (navigator.onLine === false) {
-        document.querySelector('.offline').innerHTML = 'You are currently offline, data may not be the latest';
+    function paybackTime(total, expectedSalary, repaymentPercentage) {
+        var monthlyPayment = ((expectedSalary / 12) / 100) * repaymentPercentage;
+        var months = Math.ceil((total / monthlyPayment));
+        return months;
     }
-    else {
-        document.querySelector('.offline').innerHTML = '';
+    function resultPrint(upFront, total, months) {
+        var source = document.querySelector('#resultsTemplate').innerHTML;
+        var template = Handlebars.compile(source);
+        var data = {
+            fees: upFront,
+            totals: total,
+            month: months
+        };
+        var html = template(data);
+        document.querySelector('#resultDisplay').innerHTML = html;
     }
-}
 });
-
+//pwa stuff
+// window.addEventListener('online', updatedStatus)
+// window.addEventListener('offline', updatedStatus)
+// document.addEventListener('DomContentLoaded', updatedStatus)
+//
+// function updatedStatus() {
+//     if (navigator.onLine === false) {
+//         document.querySelector('.offline').innerHTML = 'You are currently offline, data may not be the latest'
+//     } else {
+//         document.querySelector('.offline').innerHTML = ''
+//     }
+// }
