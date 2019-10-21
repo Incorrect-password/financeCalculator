@@ -8,6 +8,13 @@
     <script async defer src="js/dist/main.js"></script>
     <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js"></script>
     <title>Finance Calculator</title>
+    <script id="resultsTemplate" type="text/x-handlebars-template">
+        <div class="jumbotron col-8">
+            <p>The upfront cost is £{{fees}}.</p>
+            <p>Which means that the loan amount is £{{totals}}.</p>
+            <p>Which would take {{month}} months to pay back.</p>
+        </div>
+</script>
 </head>
 <body>
 <div class="container">
@@ -24,15 +31,16 @@
     </div>
     <form id="input">
     <div class="row">
-        <div class="col-4">
-            <p>The amount you would like to borrow to pay for your course</p>
+        <div class="col-5">
+            <p>The amount you would like to borrow to pay for your course:</p>
+            <p class="sub">Must be between £1-8000</p>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">£</span>
                 </div>
-                <input id="borrowed" type="number" class="form-control" aria-label="Amount (to the nearest pound)">
+                <input id="borrowed" value="8000" type="number" class="form-control" aria-label="Amount (to the nearest pound)" min="1" max="8000">
                 <div class="input-group-append">
                     <span class="input-group-text">.00</span>
                 </div>
@@ -40,10 +48,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
-            <p>Your expected salary</p>
+        <div class="col-5">
+            <p>Your expected salary:</p>
+            <p class="sub"></p>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">£</span>
@@ -56,12 +65,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
-            <p>Monthly repayment percentage</p>
+        <div class="col-5">
+            <p>Monthly repayment percentage:</p>
+            <p class="sub">must be between 10-100%</p>
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <div class="input-group mb-3">
-                <input id="repaymentPercentage" type="number" class="form-control" aria-label="Percentage of your pay to pay back">
+                <input id="repaymentPercentage" value="10" type="number" class="form-control" aria-label="Percentage of your pay to pay back" min="10"max="100">
                 <div class="input-group-append">
                     <span class="input-group-text">%</span>
                 </div>
@@ -74,15 +84,10 @@
         </div>
     </div>
     </form>
-    <div id="totalFees">
+    <div id="resultDisplay">
 
     </div>
-    <div id="totalBorrowed">
 
-    </div>
-    <div id="payback">
-
-    </div>
 </div>
 <!--<img id="maydenImage" src="https://raw.githubusercontent.com/Mayden-Academy/FST-curriculum/master/MAYDEN%20ACADEMY_WEBSAFE_LOGO_06.15.png?token=ALSVLWTONL26FVAI3GJGOT25WFLRG" alt="mayden academy logo">-->
 
