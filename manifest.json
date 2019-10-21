@@ -1,0 +1,11 @@
+{
+  "name": "PWA financeCalculator",
+  "short_name": "PWA financeCalculator",
+  "theme_color": "#719e40",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null
+}

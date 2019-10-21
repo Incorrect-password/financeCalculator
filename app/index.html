@@ -14,26 +14,35 @@
             <p>Which means that the loan amount is £{{totals}}.</p>
             <p>Which would take {{month}} months to pay back.</p>
         </div>
-</script>
+    </script>
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if('serviceWorker' in navigator){
+            navigator.serviceWorker.register('/service-worker.js')
+                .then( () => {
+                    console.log('sw registered')
+                })
+        }
+    </script>
 </head>
 <body>
-<div class="container">
+<div class="container fade">
     <div class="row">
         <div class="jumbotron col-8">
             <h1 class="display-4 col-8">Finance Calculator</h1>
-            <p class="lead col-12">Fill out the form below and we will calculate exactly what you will pay for your tuition at Mayden Academy and how long it will take to pay that back</p>
+            <p class="lead col-12">Fill out the form below and we will calculate exactly what you will pay for your tuition at Mayden Academy and how long it will take to pay that back.</p>
             <hr class="my-4">
             <p>You may borrow any amount between £1-£8000.</p>
             <p>If you borrow above £6400 an additional charge of £500 will be made.</p>
-            <p>If you borrow above £7200 a further additional charge of £500 will be made.</p>
-            <p>An admin fee of 5% will also be charged.</p>
+            <p>If you borrow above £7200 a further additional charge of £500 will be made for a total of £1000.</p>
+            <p>An admin fee of 5% of the total will also be charged to be paid for upfront.</p>
         </div>
     </div>
     <form id="input">
     <div class="row">
         <div class="col-5">
             <p>The amount you would like to borrow to pay for your course:</p>
-            <p class="sub">Must be between £1-8000</p>
+            <p class="sub">Must be between £1-£8000.</p>
         </div>
         <div class="col-3">
             <div class="input-group mb-3">
@@ -50,7 +59,7 @@
     <div class="row">
         <div class="col-5">
             <p>Your expected salary:</p>
-            <p class="sub"></p>
+            <p class="sub"> </p>
         </div>
         <div class="col-3">
             <div class="input-group mb-3">
@@ -67,7 +76,7 @@
     <div class="row">
         <div class="col-5">
             <p>Monthly repayment percentage:</p>
-            <p class="sub">must be between 10-100%</p>
+            <p class="sub">Must be between 10-100%.</p>
         </div>
         <div class="col-3">
             <div class="input-group mb-3">

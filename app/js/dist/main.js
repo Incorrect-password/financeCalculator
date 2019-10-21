@@ -15,7 +15,7 @@ function everything() {
             resultPrint(upFront, total, months);
         }
         else {
-            document.querySelector('#resultDisplay').innerHTML = 'read the fucking instructions';
+            document.querySelector('#resultDisplay').innerHTML = 'read the fucking instructions, alternatively stop fucking about';
         }
         document.querySelector('#borrowed').addEventListener('input', function () {
             everything();
