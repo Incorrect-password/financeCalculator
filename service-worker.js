@@ -43,7 +43,7 @@ self.addEventListener("fetch", function(event) {
         )
     }
 
-    if (event.request.url === 'http://localhost:8888/api/todo' && event.request.method == 'GET')
+    if (event.request.url === 'http://localhost:1234/financeCalculator/app' && event.request.method == 'GET')
 
         event.respondWith(async function() {
 

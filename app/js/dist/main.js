@@ -65,3 +65,15 @@ function resultPrint(upFront, total, months) {
     var html = template(data);
     document.querySelector('#resultDisplay').innerHTML = html;
 }
+//pwa stuff
+window.addEventListener('online', updatedStatus);
+window.addEventListener('offline', updatedStatus);
+document.addEventListener('DomContentLoaded', updatedStatus);
+function updatedStatus() {
+    if (navigator.onLine === false) {
+        document.querySelector('.offline').innerHTML = 'You are currently offline, data may not be the latest';
+    }
+    else {
+        document.querySelector('.offline').innerHTML = '';
+    }
+}
