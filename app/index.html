@@ -10,9 +10,10 @@
     <title>Finance Calculator</title>
     <script id="resultsTemplate" type="text/x-handlebars-template">
         <div class="jumbotron col-8">
-            <p>The upfront cost is £{{fees}}.</p>
-            <p>Which means that the loan amount is £{{totals}}.</p>
-            <p>Which would take {{month}} months to pay back.</p>
+            <p>The upfront admin fee is <span class="font-weight-bolder">£{{fees}}</span>.</p>
+            <p>And the loan amount is <span class="font-weight-bolder">£{{totals}}</span>.</p>
+            <p>Which means the total cost is <span class="font-weight-bolder">{{fullAmount}}</span>.</p>
+            <p>Which would take <span class="font-weight-bolder">{{month}}</span> months to pay back.</p>
         </div>
 </script>
 </head>
@@ -50,7 +51,7 @@
     <div class="row">
         <div class="col-5">
             <p>Your expected salary:</p>
-            <p class="sub"></p>
+            <p class="sub">Annual income after tax.</p>
         </div>
         <div class="col-3">
             <div class="input-group mb-3">
@@ -67,7 +68,7 @@
     <div class="row">
         <div class="col-5">
             <p>Monthly repayment percentage:</p>
-            <p class="sub">must be between 10-100%</p>
+            <p class="sub">Must be between 10-100%</p>
         </div>
         <div class="col-3">
             <div class="input-group mb-3">
@@ -78,16 +79,20 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-md-center">
+        <div class="justify-content-start col-8">
+            <hr class="my-3">
+        </div>
+    <div class="row">
+        <div class="col-5">
+            <p>Press submit to calculate:</p>
+        </div>
         <div class="col-3">
-            <input class="btn btn-primary btn-block" type="submit" value="Submit">
+             <input id="submit" class="btn btn-primary btn-block" type="submit" value="Submit">
         </div>
     </div>
     </form>
     <div id="resultDisplay">
-
     </div>
-
 </div>
 <!--<img id="maydenImage" src="https://raw.githubusercontent.com/Mayden-Academy/FST-curriculum/master/MAYDEN%20ACADEMY_WEBSAFE_LOGO_06.15.png?token=ALSVLWTONL26FVAI3GJGOT25WFLRG" alt="mayden academy logo">-->
 

@@ -1,16 +1,18 @@
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
-    var borrowed = Number(document.querySelector('#borrowed').value);
-    var expectedSalary = Number(document.querySelector('#expectedSalary').value);
-    var repaymentPercentage = Number(document.querySelector('#repaymentPercentage').value);
+    var borrowed = parseInt(document.querySelector('#borrowed').value);
+    var expectedSalary = parseInt(document.querySelector('#expectedSalary').value);
+    var repaymentPercentage = parseInt(document.querySelector('#repaymentPercentage').value);
     var upFront;
     var total;
+    var fullAmount;
     var months;
     if (borrowed > 0 && borrowed <= 8000 && repaymentPercentage >= 10 && repaymentPercentage <= 100) {
         upFront = upFrontCalc(borrowed);
         total = totalBorrowed(borrowed);
+        fullAmount = fullAmountCalc(total, upFront);
         months = paybackTime(total, expectedSalary, repaymentPercentage);
-        resultPrint(upFront, total, months);
+        resultPrint(upFront, total, fullAmount, months);
     }
     else {
         document.querySelector('#resultDisplay').innerHTML = 'read the fucking instructions, alternatively stop fucking about and refresh.';
@@ -21,32 +23,37 @@ document.querySelector('form').addEventListener('submit', function (e) {
     }
     function totalBorrowed(borrowed) {
         if (borrowed <= 6400) {
-            total = borrowed - upFront;
+            total = borrowed;
             return total;
         }
         else if (borrowed <= 7200) {
-            total = borrowed + 500 - upFront;
+            total = borrowed + 500;
             return total;
         }
         else if (borrowed <= 8000) {
-            total = borrowed + 1000 - upFront;
+            total = borrowed + 1000;
             return total;
         }
         else {
             document.querySelector('#borrowed').innerHTML = 'The amount inputted does not match the criteria. Please refresh and start again.';
         }
     }
+    function fullAmountCalc(total, upFront) {
+        fullAmount = total + upFront;
+        return fullAmount;
+    }
     function paybackTime(total, expectedSalary, repaymentPercentage) {
         var monthlyPayment = ((expectedSalary / 12) / 100) * repaymentPercentage;
-        var months = Math.ceil((total / monthlyPayment));
+        months = Math.ceil((total / monthlyPayment));
         return months;
     }
-    function resultPrint(upFront, total, months) {
+    function resultPrint(upFront, total, fullAmount, months) {
         var source = document.querySelector('#resultsTemplate').innerHTML;
         var template = Handlebars.compile(source);
         var data = {
             fees: upFront,
             totals: total,
+            fullAmount: fullAmount,
             month: months
         };
         var html = template(data);
