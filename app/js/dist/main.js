@@ -43,7 +43,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
         return fullAmount;
     }
     function paybackTime(total, expectedSalary, repaymentPercentage) {
-        var monthlyPayment = ((expectedSalary / 12) / 100) * repaymentPercentage;
+        var monthlyPayment = ((expectedSalary / 1200) * repaymentPercentage);
         months = Math.ceil((total / monthlyPayment));
         return months;
     }
