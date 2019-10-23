@@ -1,0 +1,8 @@
+/scss/style.scss
+/node_modules
+gulpfile.js
+package-lock.json
+tsconfig.json
+.idea/
+.DS_Store
+app/js/main.ts

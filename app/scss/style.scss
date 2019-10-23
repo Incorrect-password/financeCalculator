@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+}
+
+h1 {
+  color: #ffffff;;
+}
+
+.display-4 {
+  font-size: 4.5rem;
+}
+
+.sub {
+  font-size: 1rem;
+}
+
+#submit {
+  margin-bottom: 20px;
+}
+
+.btn {background-color: #8d0377;
+  color: #ffffff;
+  border: none;
+  border-radius: 0;
+
+    &:hover {
+      background-color: #c63806;
+    }
+}
+
+.jumbotron {
+  padding: 20px;
+  background-color: #045866;
+  color: #ffffff;
+  margin-bottom: 0;
+}
+
+.font-weight-bolder {
+  color: #d64405;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  .vanish {
+    display: none;
+  }
+  #resultDisplay {
+    font-size: 1rem;
+  }
+  .jumbotron {
+    padding: 2%;
+  }
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  #instructions {
+    font-size: 1.25rem
+  }
+}
+
+@media (min-width: 576px) {
+  .appear {
+    display: none;
+  }
+}
