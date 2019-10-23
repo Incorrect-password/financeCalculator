@@ -1,8 +1,11 @@
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
     var borrowed = parseInt(document.querySelector('#borrowed').value);
+    var borrowedLength = document.querySelector('#borrowed').value.length;
     var expectedSalary = parseInt(document.querySelector('#expectedSalary').value);
+    var expectedSalaryLength = document.querySelector('#expectedSalary').value.length;
     var repaymentPercentage = parseInt(document.querySelector('#repaymentPercentage').value);
+    var repaymentPercentageLength = document.querySelector('#repaymentPercentage').value.length;
     var upFront;
     var total;
     var fullAmount;
@@ -13,6 +16,9 @@ document.querySelector('form').addEventListener('submit', function (e) {
         fullAmount = fullAmountCalc(total, upFront);
         months = paybackTime(total, expectedSalary, repaymentPercentage);
         resultPrint(upFront, total, fullAmount, months);
+    }
+    else if (borrowedLength == 0 || expectedSalaryLength == 0 || repaymentPercentageLength == 0) {
+        document.querySelector('#resultDisplay').innerHTML = 'Please fill out each of the above fields first';
     }
     else {
         document.querySelector('#resultDisplay').innerHTML = 'read the fucking instructions, alternatively stop fucking about and refresh.';
