@@ -4,15 +4,18 @@ var cacheName = "financeCalculator";
 var cache = cacheName + "-" + version;
 var filesToCache = [
     "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
-    "https://localhost:1234/css/style.css",
-    "http://localhost:1234:js/dist/main.js",
+    "http://localhost:1234/financeCalculator/app/css/style.css",
+    "http://localhost:1234/financeCalculator/app/js/dist/main.js",
+    "http://localhost:1234/financeCalculator/app/js/localforage.js",
+    "http://localhost:1234/financeCalculator/app/images/icons/favicon.ico",
+    "http://localhost:1234/financeCalculator/app/images/icons/icon-144x144.png",
     "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js",
-    "http://localhost:1234/manifest.json",
-    "http://localhost:1234/",
-    "http://localhost:1234/index.php",
+    "http://localhost:1234/financeCalculator/app/manifest.json",
+    "http://localhost:1234/financeCalculator/app/",
+    "http://localhost:1234/financeCalculator/app/index.html",
 ];
 
-importScripts('/localforage.js');
+importScripts('js/localforage.js');
 
 self.addEventListener("install", function(event) {
     log('[ServiceWorker] Installing....');
@@ -21,6 +24,7 @@ self.addEventListener("install", function(event) {
         .open(cache) //opens cache and returns a promise
         .then(function(swcaches) { //
             log('[ServiceWorker] Caching files');
+            log(swcaches)
             return swcaches.addAll(filesToCache);
         })
     )
@@ -42,34 +46,5 @@ self.addEventListener("fetch", function(event) {
                 })
         )
     }
-
-    if (event.request.url === 'http://localhost:1234/financeCalculator/app' && event.request.method == 'GET')
-
-        event.respondWith(async function() {
-
-            let response = await fetch(event.request).catch(async function(err) {
-                var data = {success:true, msg:'',data: []};
-
-                await localforage.iterate(function(value, key) {
-                    data.data.push([key, value])
-                })
-
-                if (data.data.length > 0) {
-                    log('Returning cached data');
-                    return await new Response(JSON.stringify(data), {
-                        headers: {"Content-Type": "application/json"}
-                    })
-                }
-            })
-            let resposeData = await response.clone().json()
-            await localforage.clear()
-            log (resposeData)
-            await resposeData.data.forEach(function (todo) {
-                localforage.setItem(todo[0],todo[1])
-            })
-
-            return response
-
-        }())
 
 })
