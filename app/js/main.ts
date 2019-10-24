@@ -25,7 +25,7 @@ if (borrowed > 0 && borrowed <= 8000 && repaymentPercentage >= 10 && repaymentPe
     document.querySelector('#resultDisplay').innerHTML = 'read the fucking instructions, alternatively stop fucking about and refresh.'
 }
 
-function upFrontCalc(borrowed:number) {
+function upFrontCalc(borrowed:number): number {
         upFront = borrowed * 0.05
         return upFront
 }
@@ -47,18 +47,23 @@ function totalBorrowed(borrowed:number):number {
         document.querySelector('#borrowed').innerHTML = 'The amount inputted does not match the criteria. Please refresh and start again.'
     }
 }
-function fullAmountCalc(total:number, upFront: number) {
+function fullAmountCalc(total: number, upFront: number) {
     fullAmount = total + upFront
+
     return fullAmount
 }
 
-function paybackTime(total: number, expectedSalary: number, repaymentPercentage: number): number {
+function paybackTime(borrowed: number, expectedSalary: number, repaymentPercentage: number): number {
     let monthlyPayment:number = ((expectedSalary / 1200) * repaymentPercentage
-    months = Math.ceil((total / monthlyPayment))
+    months = Math.ceil((borrowed / monthlyPayment))
     return months
 }
 
 function resultPrint(upFront: number, total: number, fullAmount: number, months: number) {
+    upFront = upFront.toFixed(2)
+    total = total.toFixed(2)
+    fullAmount = fullAmount.toFixed(2)
+
     let source = document.querySelector('#resultsTemplate').innerHTML
     let template = Handlebars.compile(source)
     let data = {
@@ -81,7 +86,7 @@ document.addEventListener('DomContentLoaded', updatedStatus)
 
 function updatedStatus() {
     if (navigator.onLine === false) {
-        document.querySelector('.offline').innerHTML = 'You are currently offline, data may not be the latest'
+        document.querySelector('.offline').innerHTML = 'You are currently offline'
     } else {
         document.querySelector('.offline').innerHTML = ''
     }

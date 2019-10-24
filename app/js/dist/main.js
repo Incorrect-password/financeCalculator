@@ -25,8 +25,7 @@ document.querySelector('#input').addEventListener('submit', function (e) {
     }
     function upFrontCalc(borrowed) {
         upFront = borrowed * 0.05;
-        var upFron = upFront.toFixed(2);
-        return upFron;
+        return upFront;
     }
     function totalBorrowed(borrowed) {
         if (borrowed <= 6400) {
@@ -49,12 +48,15 @@ document.querySelector('#input').addEventListener('submit', function (e) {
         fullAmount = total + upFront;
         return fullAmount;
     }
-    function paybackTime(total, expectedSalary, repaymentPercentage) {
+    function paybackTime(borrowed, expectedSalary, repaymentPercentage) {
         var monthlyPayment = ((expectedSalary / 1200) * repaymentPercentage);
-        months = Math.ceil((total / monthlyPayment));
+        months = Math.ceil((borrowed / monthlyPayment));
         return months;
     }
     function resultPrint(upFront, total, fullAmount, months) {
+        upFront = upFront.toFixed(2);
+        total = total.toFixed(2);
+        fullAmount = fullAmount.toFixed(2);
         var source = document.querySelector('#resultsTemplate').innerHTML;
         var template = Handlebars.compile(source);
         var data = {
