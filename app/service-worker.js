@@ -4,6 +4,7 @@ var cacheName = "financeCalculator";
 var cache = cacheName + "-" + version;
 var filesToCache = [
     "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+    "https://code.jquery.com/jquery-3.3.1.slim.min.js",
     "http://localhost:1234/financeCalculator/app/css/style.css",
     "http://localhost:1234/financeCalculator/app/js/dist/main.js",
     "http://localhost:1234/financeCalculator/app/js/localforage.js",
@@ -12,7 +13,7 @@ var filesToCache = [
     "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js",
     "http://localhost:1234/financeCalculator/app/manifest.json",
     "http://localhost:1234/financeCalculator/app/",
-    "http://localhost:1234/financeCalculator/app/index.html",
+    "http://localhost:1234/financeCalculator/app/index.html"
 ];
 
 importScripts('js/localforage.js');

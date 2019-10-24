@@ -25,7 +25,8 @@ document.querySelector('#input').addEventListener('submit', function (e) {
     }
     function upFrontCalc(borrowed) {
         upFront = borrowed * 0.05;
-        return upFront;
+        var upFron = upFront.toFixed(2);
+        return upFron;
     }
     function totalBorrowed(borrowed) {
         if (borrowed <= 6400) {
@@ -72,7 +73,7 @@ window.addEventListener('offline', updatedStatus);
 document.addEventListener('DomContentLoaded', updatedStatus);
 function updatedStatus() {
     if (navigator.onLine === false) {
-        document.querySelector('.offline').innerHTML = 'You are currently offline, data may not be the latest';
+        document.querySelector('.offline').innerHTML = 'You are currently offline';
     }
     else {
         document.querySelector('.offline').innerHTML = '';
